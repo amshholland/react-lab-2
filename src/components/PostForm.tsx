@@ -3,9 +3,11 @@ import './PostForm.css';
 import { FormEvent, useState } from "react";
 
 import Post from '../model/Post';
+import closeForm from './SocialPosts';
 
 interface Props {
-    onSubmit: ( post: Post ) => void;
+    onClick?: ( post: Post ) => void;
+    onSubmit?: ( post: Post ) => void;
 }
 
 // Should form submit to PostInList component?
@@ -26,21 +28,20 @@ function PostForm( { onSubmit }: Props ) {
             title: title,
             thought: thought
         };
-        onSubmit( post );
 
         // reset form
         setTitle( '' );
         setThought( '' );
     }
     return (
-        <form className="PostForm" onSubmit={ handleSubmit }>
+        <form className="PostForm" id="postform" onSubmit={ handleSubmit }>
             <div className="titleDiv">
                 <label htmlFor="title" />Title <br />
-                <input type="text" className="title" id="title" onChange={ e => setTitle( e.target.value ) } value={ title } />
+                <input type="text" className="title" id="title" onChange={ e => setTitle( e.target.value ) } value={ title } required />
             </div>
             <div className="thoughtDiv">
                 <label htmlFor="thought" />Thought <br />
-                <input type="text" className="thought" id="thought" onChange={ e => setThought( e.target.value ) } value={ thought } />
+                <input type="text" className="thought" id="thought" onChange={ e => setThought( e.target.value ) } value={ thought } required />
             </div>
             <button type="submit" >Submit</button>
         </form >

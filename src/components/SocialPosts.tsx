@@ -7,7 +7,7 @@ import React from "react";
 import { useState } from 'react';
 
 function SocialPosts() {
-    const [ postform, setPostForm ] = useState( true );
+    const [ postform, setPostForm ] = useState( false );
     const [ posts, setPosts ] = useState<Post[]>( [
     ] );
 
@@ -22,18 +22,30 @@ function SocialPosts() {
         setPosts( prevPosts => [ ...prevPosts, posts ] );
     }
 
-    function showForm() {
-        // return postform === false ? true : false;
+    function openForm() {
         setPostForm( true );
     }
+
+    function closeForm() {
+        setPostForm( false );
+    }
+
+
+    // function showForm() {
+    //     // return postform === false ? true : false;
+    //     
+    // }
 
     return (
         <div className="SocialPosts">
             <header className="Header">
                 <h1>My Thoughts</h1>
             </header>
-            { postform && <PostForm onSubmit={ handleAddPost } /> }
-            <button className="newThoughtButton" onClick={ showForm }>New Thought</button>
+            <div className="formDiv">
+                <button type="button" className="close" onClick={ closeForm }>Close</button>
+                { postform && <PostForm onSubmit={ handleAddPost } /> }
+            </div>
+            <button className="newThoughtButton" onClick={ openForm } >New Thought</button>
             <div className="PostContainer">
                 { posts.map( ( post, i ) =>
                     <PostInList key={ i } post={ post } onDelete={ () => handleDeletePost( i ) } />
