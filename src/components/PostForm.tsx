@@ -1,16 +1,37 @@
+import { FormEvent, useState } from "react";
+
 import Post from '../model/Post';
-import { useState } from "react";
 
 interface Props {
-    onSubmit: ( title: Post, thought: Post ) => void;
+    onSubmit: ( post: Post ) => void;
 }
 
-function PostForm() {
+// Should form submit to PostInList component?
+// SocialPosts component would have one <PostInList/ >
+
+// Should form submit to SocialPosts component?
+// SocialPosts component would have <PostInList/ > for each post
+// A parent div would be around all of the <PostInList/ > in SocialPosts
+
+
+function PostForm( { onSubmit }: Props ) {
     const [ title, setTitle ] = useState( " " );
     const [ thought, setThought ] = useState( " " );
 
+    function handleSubmit( e: FormEvent ) {
+        e.preventDefault();
+        const post: Post = {
+            title: title,
+            thought: thought
+        };
+        onSubmit( post );
+
+        // reset form
+        setTitle( '' );
+        setThought( '' );
+    }
     return (
-        <form className="PostForm">
+        <form className="PostForm" onSubmit={ handleSubmit }>
             <p>
                 <label> Title:
                 <input type="text" className="title" onChange={ e => setTitle( e.target.value ) } value={ title } />
