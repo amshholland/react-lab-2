@@ -1,3 +1,5 @@
+import './PostInList.css';
+
 import Post from '../model/Post';
 
 interface Props {

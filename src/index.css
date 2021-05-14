@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  font-family: 'Homemade Apple', cursive;
+  color: #03a9f4;
+  font-size: 24px;
+}
+
+html {
+  background-color:  #f3f1f7
+}
+
+button {
+  width: 90%;
 }

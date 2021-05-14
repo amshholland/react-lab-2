@@ -1,3 +1,5 @@
+import './SocialPosts.css';
+
 import Post from '../model/Post';
 import PostForm from "./PostForm";
 import PostInList from './PostInList';
@@ -5,7 +7,7 @@ import React from "react";
 import { useState } from 'react';
 
 function SocialPosts() {
-    const [ postform, setPostForm ] = useState( false );
+    const [ postform, setPostForm ] = useState( true );
     const [ posts, setPosts ] = useState<Post[]>( [
     ] );
 
@@ -30,10 +32,8 @@ function SocialPosts() {
             <header className="Header">
                 <h1>My Thoughts</h1>
             </header>
-            <div className="formContainer" >
-                { postform && <PostForm onSubmit={ handleAddPost } /> }
-            </div>
-            <button id="newThoughtButton" onClick={ showForm }>New Thought</button>
+            { postform && <PostForm onSubmit={ handleAddPost } /> }
+            <button className="newThoughtButton" onClick={ showForm }>New Thought</button>
             <div className="PostContainer">
                 { posts.map( ( post, i ) =>
                     <PostInList key={ i } post={ post } onDelete={ () => handleDeletePost( i ) } />

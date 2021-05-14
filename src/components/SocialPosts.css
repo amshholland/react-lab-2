@@ -1,0 +1,9 @@
+.SocialPosts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newThoughtButton{
+    background-color: #03a9f4
+}

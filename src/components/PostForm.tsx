@@ -1,3 +1,5 @@
+import './PostForm.css';
+
 import { FormEvent, useState } from "react";
 
 import Post from '../model/Post';
@@ -32,18 +34,16 @@ function PostForm( { onSubmit }: Props ) {
     }
     return (
         <form className="PostForm" onSubmit={ handleSubmit }>
-            <p>
-                <label> Title:
-                <input type="text" className="title" onChange={ e => setTitle( e.target.value ) } value={ title } />
-                </label>
-            </p>
-            <p>
-                <label> Thought:
-                <input type="text" className="thought" onChange={ e => setThought( e.target.value ) } value={ thought } />
-                </label>
-            </p>
-            <button type="submit">Submit</button>
-        </form>
+            <div className="titleDiv">
+                <label htmlFor="title" />Title <br />
+                <input type="text" className="title" id="title" onChange={ e => setTitle( e.target.value ) } value={ title } />
+            </div>
+            <div className="thoughtDiv">
+                <label htmlFor="thought" />Thought <br />
+                <input type="text" className="thought" id="thought" onChange={ e => setThought( e.target.value ) } value={ thought } />
+            </div>
+            <button type="submit" >Submit</button>
+        </form >
     );
 }
 
