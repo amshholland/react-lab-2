@@ -6,8 +6,7 @@ import Post from '../model/Post';
 import closeForm from './SocialPosts';
 
 interface Props {
-    onClick?: ( post: Post ) => void;
-    onSubmit?: ( post: Post ) => void;
+    onSubmit: ( post: Post ) => void;
 }
 
 // Should form submit to PostInList component?
@@ -28,22 +27,25 @@ function PostForm( { onSubmit }: Props ) {
             title: title,
             thought: thought
         };
+        onSubmit( post );
 
         // reset form
         setTitle( '' );
         setThought( '' );
     }
     return (
-        <form className="PostForm" id="postform" onSubmit={ handleSubmit }>
-            <div className="titleDiv">
-                <label htmlFor="title" />Title <br />
-                <input type="text" className="title" id="title" onChange={ e => setTitle( e.target.value ) } value={ title } required />
-            </div>
-            <div className="thoughtDiv">
-                <label htmlFor="thought" />Thought <br />
-                <input type="text" className="thought" id="thought" onChange={ e => setThought( e.target.value ) } value={ thought } required />
-            </div>
-            <button type="submit" >Submit</button>
+        <form className="PostForm" onSubmit={ handleSubmit }>
+            <p>
+                <label> Title <br />
+                    <input type="text" className="title" onChange={ e => setTitle( e.target.value ) } value={ title } />
+                </label>
+            </p >
+            <p>
+                <label> Thought <br />
+                    <input type="text" className="thought" onChange={ e => setThought( e.target.value ) } value={ thought } />
+                </label>
+            </p>
+            <button type="submit" className="submit">Submit</button>
         </form >
     );
 }

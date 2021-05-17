@@ -4,15 +4,19 @@ import Post from '../model/Post';
 
 interface Props {
     post: Post;
-    onDelete?: ( post: Post ) => void;
+    onDelete?: () => void;
 }
+
 function PostInList( { post, onDelete }: Props ) {
 
     return (
         <div className="PostInList">
-            <p> { post.title } { post.thought } { onDelete }</p>
+            <h3>{ post.title }</h3>
+            <p>{ post.thought }</p>
+            <button onClick={ onDelete }>Delete</button>
         </div>
     );
 }
+
 
 export default PostInList;

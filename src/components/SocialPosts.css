@@ -2,8 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+    background-color: #f3f1f7;
 }
 
 .newThoughtButton{
-    background-color: #03a9f4
+    background-color: #03a9f4;
+    width: 33%;
 }
+
+.formContainer {
+    font-family: 'Dosis', sans-serif;
+    display: flex;
+    background-color: #79c5e8;
+    width: 50%;
+}
+
+.PostContainer {
+    background-color: white;
+}
+
+.closeForm {
+    display: hidden;
+}
+

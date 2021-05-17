@@ -1,15 +1,25 @@
 import './SocialPosts.css';
 
+import React, { useState } from 'react';
+
 import Post from '../model/Post';
 import PostForm from "./PostForm";
 import PostInList from './PostInList';
-import React from "react";
-import { useState } from 'react';
 
 function SocialPosts() {
     const [ postform, setPostForm ] = useState( false );
     const [ posts, setPosts ] = useState<Post[]>( [
     ] );
+    const closeButton = <button type="button" className="closeButton" onClick={ closeForm }>X</button>;
+
+
+    function showForm() {
+        setPostForm( true );
+    }
+
+    function closeForm() {
+        setPostForm( false );
+    }
 
     function handleDeletePost( index: number ): void {
         setPosts( prevPost => [
@@ -22,37 +32,34 @@ function SocialPosts() {
         setPosts( prevPosts => [ ...prevPosts, posts ] );
     }
 
-    function openForm() {
-        setPostForm( true );
-    }
-
-    function closeForm() {
-        setPostForm( false );
-    }
-
-
-    // function showForm() {
-    //     // return postform === false ? true : false;
-    //     
-    // }
-
+    // Close button is hidden until post form is visible
+    // submit button is hidden except while post for is visible
+    // New thought is hidden while post form is visisble
     return (
         <div className="SocialPosts">
             <header className="Header">
                 <h1>My Thoughts</h1>
             </header>
-            <div className="formDiv">
-                <button type="button" className="close" onClick={ closeForm }>Close</button>
-                { postform && <PostForm onSubmit={ handleAddPost } /> }
+
+            <div className={ "formContainer" }>
+                { postform &&
+                    <>
+                        { closeButton }
+                        <PostForm onSubmit={ handleAddPost } />
+                    </> }
             </div>
-            <button className="newThoughtButton" onClick={ openForm } >New Thought</button>
+
+            <button className="newThoughtButton" id="newThoughtButton" onClick={ showForm }>New Thought</button>
+
             <div className="PostContainer">
                 { posts.map( ( post, i ) =>
                     <PostInList key={ i } post={ post } onDelete={ () => handleDeletePost( i ) } />
                 ) }
             </div>
+
         </div>
     );
 }
+
 
 export default SocialPosts;
