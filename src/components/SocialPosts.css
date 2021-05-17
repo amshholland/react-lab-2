@@ -11,6 +11,7 @@
     margin: 8px;
     padding: 8px;
     width: 80vw;
+    background-color: white;
 }
 
 .newThoughtButton{
@@ -22,11 +23,6 @@
     font-family: 'Dosis', sans-serif;
     display: flex;
     background-color: #79c5e8;
-    width: 50%;
-}
-
-.PostContainer {
-    background-color: white;
 }
 
 .closeForm {

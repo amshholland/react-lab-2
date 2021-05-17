@@ -34,6 +34,7 @@ function SocialPosts() {
 
     function handleAddPost( posts: Post ): void {
         setPosts( prevPosts => [ ...prevPosts, posts ] );
+        setPostForm( false );
     }
 
     // Close button is hidden until post form is visible
