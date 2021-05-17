@@ -8,10 +8,14 @@ import PostInList from './PostInList';
 
 function SocialPosts() {
     const [ postform, setPostForm ] = useState( false );
-    const [ posts, setPosts ] = useState<Post[]>( [
-    ] );
+
     const closeButton = <button type="button" className="closeButton" onClick={ closeForm }>X</button>;
 
+    const [ posts, setPosts ] = useState<Post[]>( [
+        { title: "Grand Circus", thought: "Grand Circus is cool" },
+        { title: "React", thought: "React give me power!" },
+        { title: "Beatrice", thought: "My friend Beatrice has mad skills. She made the top 10!" },
+    ] );
 
     function showForm() {
         setPostForm( true );

@@ -6,6 +6,13 @@
     background-color: #f3f1f7;
 }
 
+.PostContainer {
+    border: 2px solid black;
+    margin: 8px;
+    padding: 8px;
+    width: 80vw;
+}
+
 .newThoughtButton{
     background-color: #03a9f4;
     width: 33%;
